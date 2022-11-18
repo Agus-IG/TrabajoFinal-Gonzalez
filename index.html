@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/6a3163e4c5.js" crossorigin="anonymous"></script>
+    <title>Clinica</title>
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+                <span class="h5"><i class="fa-solid fa-house-chimney-medical"></i> Clinica</span>
+            </div>
+          </nav>
+    </header>
+
+    <main style="align-content: flex-start;">
+        <div class="position-absolute top-50 start-50 translate-middle" style="display: flex;">
+            <div class="card text-center" style="width: 22rem; margin:50px;">
+                <div class="card-body">
+                  <h5 class="card-title"><i class="fa-solid fa-user-doctor"></i> Doctores</h5>
+                  <br>
+                  <button type="button" class="btn btn-primary"><i class="fa-solid fa-list"></i> Listar doctores</button>
+                  <button type="button" class="btn btn-primary"><i class="fa-solid fa-list"></i> Listar turnos</button>
+                </div>
+            </div>
+            <div class="card text-center" style="width: 23rem; margin:50px;">
+                <div class="card-body">
+                  <h5 class="card-title"><i class="fa-solid fa-user"></i> Pacientes</h5>
+                  <br>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#listaPacientes"><i class="fa-solid fa-list"></i> Listar pacientes</button>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarPaciente"><i class="fa-solid fa-user-plus"></i> Agregar paciente</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="listaPacientes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Lista de pacientes</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-dark table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td><button type="button" class="btn btn-primary">Ver mas</button></td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <div class="modal fade" id="agregarPaciente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1"></span>
+                                <input id="nombre" type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon1">
+                            </div>
+                            
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon2"></span>
+                                <input id="apellido" type="text" class="form-control" placeholder="Apellido" aria-label="Apellido" aria-describedby="basic-addon2">
+                            </div>
+                            
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon2"></span>
+                                <input id="dni" type="number" class="form-control" placeholder="DNI" aria-label="DNI" aria-describedby="basic-addon2">
+                            </div>
+                            
+                            <label for="basic-url" class="form-label">Fecha de nacimiento</label>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon2"></span>
+                                <input id="fechaNac" type="date" class="form-control" placeholder="Fecha de nacimiento" aria-label="Fecha de nacimiento" aria-describedby="basic-addon2">
+                            </div>
+                            
+                            <label for="basic-url" class="form-label">Hora del turno</label>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon2"></span>
+                                <input id="horaTurno" type="time" class="form-control" placeholder="Hora" aria-label="Hora">
+                            </div>
+                            
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon2"></span>
+                                <input id="obraSocial" type="text" class="form-control" placeholder="Obra social" aria-label="Obra social" aria-describedby="basic-addon2">
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="ingresarPaciente()">Agregar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="./main.js"></script>
+    </main>
+
+    <footer class="bg-light">
+        
+    </footer>
+
+    <script src="./bootstrap.bundle.min.js"></script>
+</body>
+</html>
