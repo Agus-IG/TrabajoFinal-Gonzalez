@@ -145,19 +145,19 @@ function ingresarPaciente() {
 }
 
 function mostrarPacientes(){
-    let ul = document.getElementById("ul")
-    if(ul.value !== ""){
-        ul.innerHTML = "Pacientes"
+    let ul3 = document.getElementById("ul3")
+    if(ul3.value !== ""){
+        ul3.innerHTML = "Pacientes"
         for (const item of pacientes) {
             let li = document.createElement("li")
             li.textContent = item.datosPaciente()
-            ul.appendChild(li)
+            ul3.appendChild(li)
         }
     }else{
         for (const item of pacientes) {
             let li = document.createElement("li")
             li.textContent = item.datosPaciente()
-            ul.appendChild(li)
+            ul3.appendChild(li)
         }
     }
 }
