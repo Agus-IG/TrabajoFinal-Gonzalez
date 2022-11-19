@@ -42,7 +42,7 @@ let doctor2 = new Doctor('Alejandro','Arriagada','Traumatismo',767668,'Gonzalez'
 
 doctores.push(doctor1,doctor2)
 
-function mostrarDoctores(){
+function mostrarPersonal(){
     let ul = document.getElementById("ul")
     if(ul.value !== ""){
         ul.innerHTML = "Doctores:"
@@ -58,6 +58,23 @@ function mostrarDoctores(){
             ul.appendChild(li)
         }
     }
+
+    let ul2 = document.getElementById("ul2")
+    if(ul2.value !== ""){
+        ul2.innerHTML = "Enfermeros:"
+        for (const item of enfermeros) {
+            let li = document.createElement("li")
+            li.textContent = item.mostrarEnfermero()
+            ul2.appendChild(li)
+        }
+    }else{
+        for (const item of enfermeros) {
+            let li = document.createElement("li")
+            li.textContent = item.mostrarEnfermero()
+            ul2.appendChild(li)
+        }
+    }
+
 }
 
 class Enfermero extends Personal{
@@ -65,10 +82,19 @@ class Enfermero extends Personal{
         super(nombre,apellido,matricula,pacientes)
         this.l = licenciatura;
     }
+
+    mostrarEnfermero(){
+        return `Nombre: ${this.n} ||
+        Apellido: ${this.a} ||
+        Licenciatura: ${this.l} ||
+        Matricula: ${this.m} ||`
+    }
 }
 
 let enfermeros = []
 let enfermero1 = new Enfermero('Bruno','Ruiz',547648,'Geriatrica')
+
+enfermeros.push(enfermero1)
 
 
 class Paciente{
