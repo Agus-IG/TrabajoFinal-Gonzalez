@@ -1,8 +1,10 @@
-let turno = [];
-
 class Clinica{
     constructor(nombre,dueño,responsabilidadJuridica,doctores,enfermeros){
-        this.n = nombre;
+        this.nombreC = nombre;
+        this.dueño = dueño;
+        this.responsabilidadJuridica = responsabilidadJuridica;
+        this.doctores = doctores;
+        this.enfermeros = enfermeros;
     }
 }
 
@@ -22,11 +24,39 @@ class Doctor extends Personal{
     }   
     
     mostrarTurno(){
-
+        
     }
 
     mostrarDoctor(){
-        return "Nombre: "+this.n+"\n"+"Apellido: "+this.a+"\n"+"Especialidad: "+this.e+"\n"+"Matricula: "
+        return `Nombre: ${this.n} ||
+        Apellido: ${this.a} ||
+        Especialidad: ${this.e} ||
+        Matricula: ${this.m} ||`
+    }
+}
+
+let doctores = []
+
+let doctor1 = new Doctor('Javier','Parra','Cirugia',455465,'Carrera')
+let doctor2 = new Doctor('Alejandro','Arriagada','Traumatismo',767668,'Gonzalez')
+
+doctores.push(doctor1,doctor2)
+
+function mostrarDoctores(){
+    let ul = document.getElementById("ul")
+    if(ul.value !== ""){
+        ul.innerHTML = "Doctores:"
+        for (const item of doctores) {
+            let li = document.createElement("li")
+            li.textContent = item.mostrarDoctor()
+            ul.appendChild(li)
+        }
+    }else{
+        for (const item of doctores) {
+            let li = document.createElement("li")
+            li.textContent = item.mostrarDoctor()
+            ul.appendChild(li)
+        }
     }
 }
 
@@ -37,22 +67,42 @@ class Enfermero extends Personal{
     }
 }
 
+let enfermeros = []
+let enfermero1 = new Enfermero('Bruno','Ruiz',547648,'Geriatrica')
+
+
 class Paciente{
-    constructor(nombre,apellido, dni,fechaNac,turno,obraSocial){
-        this.n = nombre;
-        this.a = apellido;
-        this.d = dni;
-        this.fn = fechaNac;
-        this.t = turno;
-        this.os = obraSocial;
+    constructor(nombre,apellido,dni,fechaNac,doctor,obraSocial){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.fechaNac = fechaNac;
+        this.doc = doctor;
+        this.obraSocial = obraSocial;
     }
 
     edad(){
-
+        let fechaActual = new Date()
+        let fechaNacimiento = new Date(this.fechaNac)
+        let edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear()
+        let diferenciaMeses = fechaActual.getMonth() - fechaNacimiento.getMonth()
+        if (
+            diferenciaMeses < 0 ||
+            (diferenciaMeses === 0 && fechaActual.getDate() < fechaNacimiento.getDate())
+        ) {
+            edad--
+        }
+        return edad
     }
 
     datosPaciente(){
-        return this.n+"-"+this.a+"-"+this.d+"-"+this.fn+"-"+this.t+"-"+this.os
+        return `Nombre: ${this.nombre} ||
+        Apellido: ${this.apellido} ||
+        DNI: ${this.dni} ||
+        Edad: ${this.edad()} ||
+        Fecha de nacimiento: ${this.fechaNac} ||
+        Doctor/Enfermero: ${this.doc} ||
+        Obra social: ${this.obraSocial}`
     }
 }
 
@@ -62,9 +112,26 @@ function ingresarPaciente() {
     let apellido = document.getElementById("apellido").value
     let dni = parseInt(document.getElementById("dni").value)
     let fechaNac = document.getElementById("fechaNac").value
-    let turno = document.getElementById("horaTurno").value
+    let doctorEnfermero = document.getElementById("doctorEnfermero").value
     let obraSocial = document.getElementById("obraSocial").value
-    let paciente = new Paciente(nombre,apellido, dni,fechaNac,turno,obraSocial)
+    let paciente = new Paciente(nombre,apellido,dni,fechaNac,doctorEnfermero,obraSocial)
     pacientes.push(paciente)
 }
 
+function mostrarPacientes(){
+    let ul = document.getElementById("ul")
+    if(ul.value !== ""){
+        ul.innerHTML = "Pacientes"
+        for (const item of pacientes) {
+            let li = document.createElement("li")
+            li.textContent = item.datosPaciente()
+            ul.appendChild(li)
+        }
+    }else{
+        for (const item of pacientes) {
+            let li = document.createElement("li")
+            li.textContent = item.datosPaciente()
+            ul.appendChild(li)
+        }
+    }
+}

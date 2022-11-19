@@ -24,7 +24,7 @@
                 <div class="card-body">
                   <h5 class="card-title"><i class="fa-solid fa-user-doctor"></i> Doctores</h5>
                   <br>
-                  <button type="button" class="btn btn-primary"><i class="fa-solid fa-list"></i> Listar doctores</button>
+                  <button type="button" class="btn btn-primary" onclick="mostrarDoctores()"><i class="fa-solid fa-list"></i> Listar doctores</button>
                   <button type="button" class="btn btn-primary"><i class="fa-solid fa-list"></i> Listar turnos</button>
                 </div>
             </div>
@@ -32,43 +32,12 @@
                 <div class="card-body">
                   <h5 class="card-title"><i class="fa-solid fa-user"></i> Pacientes</h5>
                   <br>
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#listaPacientes"><i class="fa-solid fa-list"></i> Listar pacientes</button>
+                  <button type="button" class="btn btn-primary" onclick="mostrarPacientes()"><i class="fa-solid fa-list"></i> Listar pacientes</button>
                   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarPaciente"><i class="fa-solid fa-user-plus"></i> Agregar paciente</button>
                 </div>
             </div>
-        </div>
 
-        <div class="modal fade" id="listaPacientes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">Lista de pacientes</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <table class="table table-dark table-striped">
-                        <thead>
-                          <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Apellido</th>
-                            <th scope="col"></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td><button type="button" class="btn btn-primary">Ver mas</button></td>
-                          </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                </div>
-              </div>
-            </div>
-          </div>
+        </div>
 
         <div class="modal fade" id="agregarPaciente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -99,12 +68,17 @@
                                 <input id="fechaNac" type="date" class="form-control" placeholder="Fecha de nacimiento" aria-label="Fecha de nacimiento" aria-describedby="basic-addon2">
                             </div>
                             
-                            <label for="basic-url" class="form-label">Hora del turno</label>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon2"></span>
-                                <input id="horaTurno" type="time" class="form-control" placeholder="Hora" aria-label="Hora">
+                                <select id="doctorEnfermero" class="form-select" aria-label="Default select example">
+                                    <option selected>Doctor/Enfermero</option>
+                                    <option value="Cirugia">Cirugia (Doctor)</option>
+                                    <option value="Traumatismo">Traumatismo (Doctor)</option>
+                                    <option value="Geriatrica">Geriatrica (Enfermero)</option>
+                                    <option value="Orozco">Mariano Orozco (Enfermero)</option>
+                                </select>
                             </div>
-                            
+
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon2"></span>
                                 <input id="obraSocial" type="text" class="form-control" placeholder="Obra social" aria-label="Obra social" aria-describedby="basic-addon2">
@@ -112,11 +86,16 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary" onclick="ingresarPaciente()">Agregar</button>
+                        <button type="button" class="btn btn-primary" onclick="ingresarPaciente()" data-bs-dismiss="modal">Agregar</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div>
+          <ul id="ul"></ul> 
+        </div>
+
         <script src="./main.js"></script>
     </main>
 
